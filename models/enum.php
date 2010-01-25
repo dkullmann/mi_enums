@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: enum.php 2109 2010-01-15 11:46:17Z AD7six $ */
+/* SVN FILE: $Id$ */
 
 /**
  * Short description for enum.php
@@ -19,9 +19,9 @@
  * @package       mi_enums
  * @subpackage    mi_enums.models
  * @since         v 1.0
- * @version       $Revision: 2109 $
- * @modifiedby    $LastChangedBy: AD7six $
- * @lastmodified  $Date: 2010-01-15 12:46:17 +0100 (Fri, 15 Jan 2010) $
+ * @version       $Revision$
+ * @modifiedby    $LastChangedBy$
+ * @lastmodified  $Date$
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 App::import('Vendor', 'Mi.MiCache');

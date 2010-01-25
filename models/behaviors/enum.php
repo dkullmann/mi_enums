@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: enum.php 1713 2009-10-15 07:08:01Z AD7six $ */
+/* SVN FILE: $Id$ */
 
 /**
  * Short description for enum.php
@@ -19,9 +19,9 @@
  * @package       base
  * @subpackage    base.models.behaviors
  * @since         v 1.0
- * @version       $Revision: 1713 $
- * @modifiedby    $LastChangedBy: AD7six $
- * @lastmodified  $Date: 2009-10-15 09:08:01 +0200 (Thu, 15 Oct 2009) $
+ * @version       $Revision$
+ * @modifiedby    $LastChangedBy$
+ * @lastmodified  $Date$
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 

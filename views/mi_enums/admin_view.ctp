@@ -1,4 +1,4 @@
-<?php /* SVN FILE: $Id: admin_view.ctp 1723 2009-10-16 10:36:34Z AD7six $ */
+<?php /* SVN FILE: $Id$ */
 extract($data);
 $this->set('title_for_layout', $Enum['display']);
 ?>

@@ -1,4 +1,4 @@
-<?php /* SVN FILE: $Id: admin_multi_edit.ctp 1723 2009-10-16 10:36:34Z AD7six $ */
+<?php /* SVN FILE: $Id$ */
 $this->set('title_for_layout', __('Enums', true));
 echo $form->create(); ?>
 <table>

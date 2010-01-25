@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: mi_enums_controller.php 2058 2009-12-24 12:43:23Z AD7six $ */
+/* SVN FILE: $Id$ */
 
 /**
  * Short description for enums_controller.php
@@ -19,9 +19,9 @@
  * @package       mi_enums
  * @subpackage    mi_enums.controllers
  * @since         v 1.0
- * @version       $Revision: 2058 $
- * @modifiedby    $LastChangedBy: AD7six $
- * @lastmodified  $Date: 2009-12-24 13:43:23 +0100 (Thu, 24 Dec 2009) $
+ * @version       $Revision$
+ * @modifiedby    $LastChangedBy$
+ * @lastmodified  $Date$
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 

@@ -9,15 +9,11 @@
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @filesource
  * @copyright     Copyright (c) 2009, Andy Dawson
  * @link          www.ad7six.com
  * @package       mi_enums
  * @subpackage    mi_enums.views.helpers
  * @since         v 1.0 (18-Jun-2009)
- * @version       $Revision$
- * @modifiedby    $LastChangedBy$
- * @lastmodified  $Date$
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 

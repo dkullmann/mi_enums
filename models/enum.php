@@ -364,7 +364,7 @@ class Enum extends MiEnumsAppModel {
 		}
 		ksort($config);
 		$config = preg_replace("@=> (?:array\()?'(.*)'@", '=> __(\'\1\', true)', '$config = ' . var_export($config, true));
-		file_put_contents($configFile, "<?php\n" . $config . ';');
+		file_put_contents($configFile, "<?php\n//@ignore\n" . $config . ';');
 	}
 
 /**

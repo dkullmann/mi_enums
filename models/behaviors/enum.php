@@ -1,6 +1,4 @@
 <?php
-
-
 /**
  * Short description for enum.php
  *
@@ -90,7 +88,7 @@ class EnumBehavior extends ModelBehavior {
 		if (Configure::read() && isset($Model->data[$Model->alias])) {
 			$this->_enum();
 			foreach ($fields as $field) {
-				if (array_key_exists($field, $Model->data[$Model->alias])) {
+				if (array_key_exists($field, $Model->data[$Model->alias]) && $Model->data[$Model->alias][$field] !== '') {
 					$conditions['type'] = $Model->name . '.' . $field;
 					$conditions['value'] = $Model->data[$Model->alias][$field];
 					if (!$this->Enum->find('count', compact('conditions'))) {

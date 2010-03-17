@@ -36,7 +36,8 @@ class EnumBehavior extends ModelBehavior {
  */
 	var $_defaultSettings = array(
 		'fields' => array(),
-		'validate' => false
+		'validate' => false,
+		'autoPopulate' => null
 	);
 
 /**
@@ -70,6 +71,9 @@ class EnumBehavior extends ModelBehavior {
 		if (!isset($config['fields'])) {
 			$config = array('fields' => $config);
 		}
+		if ($this->_defaultSettings['autoPopulate'] === null) {
+			$this->_defaultSettings['autoPopulate'] = !Configure::read();
+		}
 		$this->settings[$Model->alias] = Set::merge($this->_defaultSettings, $config);
 	}
 
@@ -85,7 +89,7 @@ class EnumBehavior extends ModelBehavior {
  */
 	function beforeValidate(&$Model) {
 		extract($this->settings[$Model->name]);
-		if (Configure::read() && isset($Model->data[$Model->alias])) {
+		if ($autoPopulate && isset($Model->data[$Model->alias])) {
 			$this->_enum();
 			foreach ($fields as $field) {
 				if (array_key_exists($field, $Model->data[$Model->alias]) && $Model->data[$Model->alias][$field] !== '') {
@@ -94,7 +98,11 @@ class EnumBehavior extends ModelBehavior {
 					if (!$this->Enum->find('count', compact('conditions'))) {
 						$this->Enum->create();
 						$conditions['display'] = Inflector::humanize(Inflector::underscore($conditions['value']));
-						$this->Enum->save($conditions);
+						$conditions['description'] = $conditions['display'] . ' (auto generated)';
+						$this->Enum->create($conditions);
+						if ($this->Enum->checkDuplicate()) {
+							$this->Enum->save($conditions);
+						}
 					}
 				}
 			}

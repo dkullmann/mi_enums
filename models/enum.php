@@ -1,6 +1,4 @@
 <?php
-
-
 /**
  * Short description for enum.php
  *

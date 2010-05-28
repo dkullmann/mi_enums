@@ -74,7 +74,7 @@ class EnumBehavior extends ModelBehavior {
 		if ($this->_defaultSettings['autoPopulate'] === null) {
 			$this->_defaultSettings['autoPopulate'] = !Configure::read();
 		}
-		$this->settings[$Model->alias] = Set::merge($this->_defaultSettings, $config);
+		$this->settings[$Model->name] = Set::merge($this->_defaultSettings, $config);
 	}
 
 /**
@@ -89,12 +89,12 @@ class EnumBehavior extends ModelBehavior {
  */
 	function beforeValidate(&$Model) {
 		extract($this->settings[$Model->name]);
-		if ($autoPopulate && isset($Model->data[$Model->alias])) {
+		if ($autoPopulate && isset($Model->data[$Model->name])) {
 			$this->_enum();
 			foreach ($fields as $field) {
-				if (array_key_exists($field, $Model->data[$Model->alias]) && $Model->data[$Model->alias][$field] !== '') {
+				if (array_key_exists($field, $Model->data[$Model->name]) && $Model->data[$Model->name][$field] !== '') {
 					$conditions['type'] = $Model->name . '.' . $field;
-					$conditions['value'] = $Model->data[$Model->alias][$field];
+					$conditions['value'] = $Model->data[$Model->name][$field];
 					if (!$this->Enum->find('count', compact('conditions'))) {
 						$this->Enum->create();
 						$conditions['display'] = Inflector::humanize(Inflector::underscore($conditions['value']));

@@ -201,7 +201,7 @@ class Enum extends MiEnumsAppModel {
 		if ($Inst->hasField($mode)) {
 			$rowData = $Inst->find('list', array(
 				'order' => $mode,
-				'fields' => array($mode, $mode)
+				'fields' => array('DISTINCT ' . $mode, $mode)
 			));
 			$diff = array_diff_key($rowData, $data);
 			if ($diff) {
@@ -369,10 +369,12 @@ class Enum extends MiEnumsAppModel {
  * values method
  *
  * @param string $identifier ''
+ * @param string $dbConfig 'default'
+ * @param bool $autoPopulate true
  * @return void
  * @access public
  */
-	function values($identifier = '', $dbConfig = 'default') {
+	function values($identifier = '', $dbConfig = 'default', $autoPopulate = true) {
 		if (!$identifier) {
 			return false;
 		}
@@ -382,7 +384,7 @@ class Enum extends MiEnumsAppModel {
 		$this->Behaviors->disable('List');
 		$return = $this->find('list', compact('conditions', 'order', 'fields'));
 		$this->Behaviors->enable('List');
-		if (!$return) {
+		if (!$return && $autoPopulate) {
 			$this->autoPopulate($identifier, $dbConfig);
 			$this->Behaviors->disable('List');
 			$return = $this->find('list', compact('conditions', 'order', 'fields'));

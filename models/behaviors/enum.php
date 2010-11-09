@@ -160,22 +160,22 @@ class EnumBehavior extends ModelBehavior {
  * For the specified field, what are the enum values
  *
  * @param mixed $Model
- * @param string $field
- * @param bool $reset
+ * @param string $field ''
+ * @param bool $autoPopulate true
  * @return void
  * @access public
  */
-	function enumValues(&$Model, $field = '') {
+	function enumValues(&$Model, $field = '', $autoPopulate = true) {
 		if (!$field) {
 			$fields = $this->enumFields($Model);
 			$return = array();
 			foreach($fields as $field) {
-				$return[$field] = $this->enumFields($Model, $field);
+				$return[$field] = $this->enumFields($Model, $field, $autoPopulate);
 			}
 			return $return;
 		}
 		App::import('Vendor', 'Mi.MiCache');
-		return MiCache::data('MiEnums.Enum', 'values', $Model->name . '.' . $field, $Model->useDbConfig);
+		return MiCache::data('MiEnums.Enum', 'values', $Model->name . '.' . $field, $Model->useDbConfig, $autoPopulate);
 	}
 
 /**

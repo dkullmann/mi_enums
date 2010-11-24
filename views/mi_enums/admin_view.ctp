@@ -1,4 +1,4 @@
-<?php /* SVN FILE: $Id$ */
+<?php
 extract($data);
 $this->set('title_for_layout', $Enum['display']);
 ?>
@@ -15,10 +15,10 @@ $this->set('title_for_layout', $Enum['display']);
 	echo $html->tableCells(array('created', $Enum['created']));
 	echo $html->tableCells(array('modified', $Enum['modified']));
 
-$menu->settings(__('Options', true), array('overwrite' => true));
+$menu->settings(__d('mi_enums', 'Options', true), array('overwrite' => true));
 $menu->add(array(
-	array('title' => __('New Enum', true), 'url' => array('action' => 'add', $Enum['type'])),
-	array('title' => __('List Enums', true), 'url' => array('action' => 'index', $Enum['type']))
+	array('title' => __d('mi_enums', 'New Enum', true), 'url' => array('action' => 'add', $Enum['type'])),
+	array('title' => __d('mi_enums', 'List Enums', true), 'url' => array('action' => 'index', $Enum['type']))
 ));
 ?>
 </table>

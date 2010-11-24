@@ -1,4 +1,4 @@
-<?php /* SVN FILE: $Id$ */
+<?php
 if ($data) {
 	extract($data);
 }
@@ -33,6 +33,7 @@ echo $form->inputs(array(
 	'description',
 ));
 echo $form->end('Submit');
-$menu->settings(__('Options', true), array('overwrite' => true));
-$menu->add(array('title' => __('New Enum', true), 'url' => array('action' => 'add', $type)));
-?></div>
+$menu->settings(__d('mi_enums', 'Options', true), array('overwrite' => true));
+$menu->add(array('title' => __d('mi_enums', 'New Enum', true), 'url' => array('action' => 'add', $type)));
+?>
+</div>

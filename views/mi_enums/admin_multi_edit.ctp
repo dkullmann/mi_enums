@@ -1,6 +1,7 @@
-<?php /* SVN FILE: $Id$ */
-$this->set('title_for_layout', __('Enums', true));
-echo $form->create(); ?>
+<?php
+$this->set('title_for_layout', __d('mi_enums', 'Enums', true));
+echo $form->create();
+?>
 <table>
 <?php
 if (!empty($type)) {

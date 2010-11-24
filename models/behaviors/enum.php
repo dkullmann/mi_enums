@@ -112,7 +112,7 @@ class EnumBehavior extends ModelBehavior {
 		}
 		foreach ($fields as $field) {
 			$values = $this->enumValues($Model, $field);
-			$Model->validate[$field] = array('rule' => array('inList', array_keys($values)));
+			$Model->validate[$field][] = array('rule' => array('inList', array_keys($values)));
 		}
 		return true;
 	}
@@ -155,9 +155,7 @@ class EnumBehavior extends ModelBehavior {
 	}
 
 /**
- * enumValues method
- *
- * For the specified field, what are the enum values
+ * Return the enumerated values for the specified field.
  *
  * @param mixed $Model
  * @param string $field ''

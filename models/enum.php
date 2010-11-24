@@ -184,15 +184,15 @@ class Enum extends MiEnumsAppModel {
 				if (in_array($schema[$field]['type'], array('integer', 'boolean'))) {
 					if ($schema[$field]['length'] === 1) {
 						$data = array(
-							0 =>  __('no', true),
-							1 =>  __('yes', true),
+							0 =>  __d('mi_enums', 'no', true),
+							1 =>  __d('mi_enums', 'yes', true),
 						);
 					} elseif ($schema[$field]['length'] === 2) {
 						$data = array(
-							0 =>  __('inactive', true),
-							1 =>  __('active', true),
-							2 =>  __('unconfirmed', true),
-							3 =>  __('needs action', true),
+							0 =>  __d('mi_enums', 'inactive', true),
+							1 =>  __d('mi_enums', 'active', true),
+							2 =>  __d('mi_enums', 'unconfirmed', true),
+							3 =>  __d('mi_enums', 'needs action', true),
 						);
 					}
 				}
@@ -361,7 +361,7 @@ class Enum extends MiEnumsAppModel {
 			}
 		}
 		ksort($config);
-		$config = preg_replace("@=> (?:array\()?'(.*)'@", '=> __(\'\1\', true)', '$config = ' . var_export($config, true));
+		$config = preg_replace("@=> (?:array\()?'(.*)'@", '=> __d(\'mi_enums\', \'\1\', true)', '$config = ' . var_export($config, true));
 		file_put_contents($configFile, "<?php\n//@noverify\n" . $config . ';');
 	}
 

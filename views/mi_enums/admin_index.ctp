@@ -1,7 +1,6 @@
-<?php /* SVN FILE: $Id$ */ ?>
 <table class="stickyHeader">
 <?php
-$this->set('title_for_layout', __('Enums', true));
+$this->set('title_for_layout', __d('mi_enums', 'Enums', true));
 $paginator->options(array('url' => $this->passedArgs));
 if (!empty($type)) {
 	$th = array(
@@ -55,30 +54,30 @@ foreach ($data as $i => $row) {
 	}
 	echo $html->tableCells($tr, array('class' => 'odd'), array('class' => 'even'));
 }
-$menu->settings(__('Options', true), array('overwrite' => true));
+$menu->settings(__d('mi_enums', 'Options', true), array('overwrite' => true));
 if (!empty($type)) {
 	$menu->add(array(
-		array('title' => __('Check Order', true), 'url' => array('action' => 'verify', $type)),
-		array('title' => __('Reset Order', true), 'url' => array('action' => 'recover', $type)),
-		array('title' => __('New Enum', true), 'url' => array('action' => 'add', $type)),
-		array('title' => __('Verify', true), 'url' => array('action' => 'verify', $type)),
-		array('title' => __('Reset Order', true), 'url' => array('action' => 'recover', $type)),
-		array('title' => __('Delete', true), 'url' => array('action' => 'delete_all', $type)),
-		array('title' => sprintf(__('Auto populate %1$s', true), $type), 'url' => array('action' => 'auto_populate', $type)),
+		array('title' => __d('mi_enums', 'Check Order', true), 'url' => array('action' => 'verify', $type)),
+		array('title' => __d('mi_enums', 'Reset Order', true), 'url' => array('action' => 'recover', $type)),
+		array('title' => __d('mi_enums', 'New Enum', true), 'url' => array('action' => 'add', $type)),
+		array('title' => __d('mi_enums', 'Verify', true), 'url' => array('action' => 'verify', $type)),
+		array('title' => __d('mi_enums', 'Reset Order', true), 'url' => array('action' => 'recover', $type)),
+		array('title' => __d('mi_enums', 'Delete', true), 'url' => array('action' => 'delete_all', $type)),
+		array('title' => sprintf(__d('mi_enums', 'Auto populate %1$s', true), $type), 'url' => array('action' => 'auto_populate', $type)),
 	));
 } else {
 	$menu->add(array(
-		array('title' => __('Check Order', true), 'url' => array('action' => 'verify')),
-		array('title' => __('Reset Order', true), 'url' => array('action' => 'recover')),
-		array('title' => sprintf(__('Auto populate %1$s', true), __('all Enums', true)), 'url' => array('action' => 'auto_populate')),
+		array('title' => __d('mi_enums', 'Check Order', true), 'url' => array('action' => 'verify')),
+		array('title' => __d('mi_enums', 'Reset Order', true), 'url' => array('action' => 'recover')),
+		array('title' => sprintf(__d('mi_enums', 'Auto populate %1$s', true), __d('mi_enums', 'all Enums', true)), 'url' => array('action' => 'auto_populate')),
 	));
 }
 if (!empty($types) && is_array($types)) {
-	$menu->settings(__('Defined Enums', true), array('overwrite' => true));
+	$menu->settings(__d('mi_enums', 'Defined Enums', true), array('overwrite' => true));
 	foreach ($types as $type) {
 		$menu->add(array(
 			'url' => array('action' => 'index', $type),
-			'title' => sprintf(__('%1$s value', true), Inflector::humanize(Inflector::underscore($type)))
+			'title' => sprintf(__d('mi_enums', '%1$s value', true), Inflector::humanize(Inflector::underscore($type)))
 		));
 	}
 }

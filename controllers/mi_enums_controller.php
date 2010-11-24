@@ -1,6 +1,4 @@
 <?php
-
-
 /**
  * Short description for enums_controller.php
  *
@@ -81,14 +79,14 @@ class MiEnumsController extends MiEnumsAppController {
 			$type = $this->data['Enum']['type'];
 			if ($this->Enum->save($this->data)) {
 				$display = $this->Enum->display();
-				$this->Session->setFlash(sprintf(__('Enum "%1$s" added', true), $display));
+				$this->Session->setFlash(sprintf(__d('mi_enums', 'Enum "%1$s" added', true), $display));
 				return $this->_back();
 			} else {
 				$this->data = $this->Enum->data;
 				if (Configure::read()) {
 					$this->Session->setFlash(implode($this->Enum->validationErrors, '<br />'));
 				} else {
-					$this->Session->setFlash(__('errors in form', true));
+					$this->Session->setFlash(__d('mi_enums', 'errors in form', true));
 				}
 			}
 		}
@@ -134,12 +132,12 @@ class MiEnumsController extends MiEnumsAppController {
 		if ($id && $this->Enum->exists()) {
 			$display = $this->Enum->display($id);
 			if ($this->Enum->delete($id)) {
-				$this->Session->setFlash(sprintf(__('Enum %1$s "%2$s" deleted', true), $id, $display));
+				$this->Session->setFlash(sprintf(__d('mi_enums', 'Enum %1$s "%2$s" deleted', true), $id, $display));
 			} else {
-				$this->Session->setFlash(sprintf(__('Problem deleting Enum %1$s "%2$s"', true), $id, $display));
+				$this->Session->setFlash(sprintf(__d('mi_enums', 'Problem deleting Enum %1$s "%2$s"', true), $id, $display));
 			}
 		} else {
-			$this->Session->setFlash(sprintf(__('Enum with id %1$s doesn\'t exist', true), $id));
+			$this->Session->setFlash(sprintf(__d('mi_enums', 'Enum with id %1$s doesn\'t exist', true), $id));
 		}
 		return $this->_back();
 	}
@@ -156,7 +154,7 @@ class MiEnumsController extends MiEnumsAppController {
 			return;
 		}
 		$this->Enum->deleteAll(array('type' => $type));
-		$this->Session->setFlash(sprintf(__('All %1$s enums deleted', true), $type));
+		$this->Session->setFlash(sprintf(__d('mi_enums', 'All %1$s enums deleted', true), $type));
 		$this->_back();
 	}
 
@@ -171,14 +169,14 @@ class MiEnumsController extends MiEnumsAppController {
 		if ($this->data) {
 			if ($this->Enum->saveAll($this->data)) {
 				$display = $this->Enum->display();
-				$this->Session->setFlash(sprintf(__('Enum "%1$s" updated', true), $display));
+				$this->Session->setFlash(sprintf(__d('mi_enums', 'Enum "%1$s" updated', true), $display));
 				return $this->_back();
 			} else {
 				$this->data = $this->Enum->data;
 				if (Configure::read()) {
 					$this->Session->setFlash(implode($this->Enum->validationErrors, '<br />'));
 				} else {
-					$this->Session->setFlash(__('errors in form', true));
+					$this->Session->setFlash(__d('mi_enums', 'errors in form', true));
 				}
 			}
 		} elseif ($id) {
@@ -289,13 +287,13 @@ class MiEnumsController extends MiEnumsAppController {
 				$data[$key] = $row;
 			}
 			if ($this->Enum->saveAll($data, array('validate' => 'first', 'atomic' => false))) {
-				$this->Session->setFlash(sprintf(__('Enums added', true)));
+				$this->Session->setFlash(sprintf(__d('mi_enums', 'Enums added', true)));
 				$this->_back();
 			} else {
 				if (Configure::read()) {
 					$this->Session->setFlash(implode($this->Enum->validationErrors, '<br />'));
 				} else {
-					$this->Session->setFlash(__('Some or all additions did not succeed', true));
+					$this->Session->setFlash(__d('mi_enums', 'Some or all additions did not succeed', true));
 				}
 			}
 		} else {
@@ -322,12 +320,12 @@ class MiEnumsController extends MiEnumsAppController {
 				$data[$key] = $row;
 			}
 			if ($this->Enum->saveAll($data, array('validate' => 'first'))) {
-				$this->Session->setFlash(sprintf(__('Enums updated', true)));
+				$this->Session->setFlash(sprintf(__d('mi_enums', 'Enums updated', true)));
 			} else {
 				if (Configure::read()) {
 					$this->Session->setFlash(implode($this->Enum->validationErrors, '<br />'));
 				} else {
-					$this->Session->setFlash(__('Some or all updates did not succeed', true));
+					$this->Session->setFlash(__d('mi_enums', 'Some or all updates did not succeed', true));
 				}
 			}
 			$this->_setSelects();
@@ -376,7 +374,7 @@ class MiEnumsController extends MiEnumsAppController {
 			$this->redirect(array('action' => 'index'));
 		}
 		$conditions = $this->Enum->searchConditions($term, isset($this->passedArgs['extended']));
-		$this->Session->setFlash(sprintf(__('All enums matching the term "%1$s"', true), htmlspecialchars($term)));
+		$this->Session->setFlash(sprintf(__d('mi_enums', 'All enums matching the term "%1$s"', true), htmlspecialchars($term)));
 		$this->data = $this->paginate($conditions);
 		$this->_setSelects();
 		$this->render('admin_index');
@@ -416,7 +414,7 @@ class MiEnumsController extends MiEnumsAppController {
 	function admin_view() {
 		$this->data = $this->Enum->read(null, $id);
 		if(!$this->data) {
-			$this->Session->setFlash(__('Invalid enum', true));
+			$this->Session->setFlash(__d('mi_enums', 'Invalid enum', true));
 			return $this->_back();
 		}
 	}
